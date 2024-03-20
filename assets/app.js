@@ -17,6 +17,16 @@ const maxDepth = function(root) {
 };
 
 document.getElementById("submit").addEventListener("click", function() {
+  calculateDepth();
+});
+
+document.getElementById("intervalsInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    calculateDepth();
+  }
+});
+
+function calculateDepth() {
   const input = document.getElementById("intervalsInput").value;
   const values = JSON.parse(input);
 
@@ -28,7 +38,7 @@ document.getElementById("submit").addEventListener("click", function() {
 
   // Display the output
   document.getElementById("output").innerText = "Maximum Depth: " + depth;
-});
+}
 
 // Function to create a binary tree from the given array representation
 function createTree(values) {
@@ -53,3 +63,9 @@ function createTree(values) {
 
   return root;
 }
+
+// Add this script to clear the input field on page load
+document.addEventListener('DOMContentLoaded', function() {
+  var intervalsInput = document.getElementById('intervalsInput');
+  intervalsInput.value = ''; // Set the input value to an empty string
+});
